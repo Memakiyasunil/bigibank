@@ -12,5 +12,5 @@ COPY . .
 # Expose port
 EXPOSE 5000
 
-# Start the server
-CMD ["npm", "start"]
+# Start the server (runs seed script first to populate database)
+CMD ["sh", "-c", "node seed.js && npm start"]
