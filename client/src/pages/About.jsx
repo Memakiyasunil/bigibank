@@ -32,7 +32,7 @@ export default function About() {
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Target, title: 'Our Mission', desc: 'To democratise banking by making premium financial services accessible to every Indian, regardless of location or income level.', color: 'bg-blue-100 text-royal-DEFAULT' },
+              { icon: Target, title: 'Our Mission', desc: 'To democratise banking by making premium financial services accessible to every Indian, regardless of location or income level.', color: 'bg-blue-100 text-royal' },
               { icon: Award, title: 'Our Vision', desc: 'To become India\'s most trusted digital bank by 2030, serving 100 million customers with innovative, secure, and transparent financial services.', color: 'bg-amber-100 text-gold-dark' },
               { icon: Shield, title: 'Our Values', desc: 'Trust, transparency, innovation, and customer-first thinking are the core values that drive every decision we make at BigiBank.', color: 'bg-green-100 text-emerald-bank' },
             ].map(({ icon: Icon, title, desc, color }) => (
@@ -40,7 +40,7 @@ export default function About() {
                 <div className={`w-14 h-14 ${color.split(' ')[0]} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
                   <Icon size={24} className={color.split(' ')[1]} />
                 </div>
-                <h3 className="font-display font-bold text-xl text-navy-DEFAULT mb-3">{title}</h3>
+                <h3 className="font-display font-bold text-xl text-navy mb-3">{title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
               </div>
             ))}
@@ -77,8 +77,8 @@ export default function About() {
                 <div className="w-16 h-16 bg-gradient-royal rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl shadow-royal">
                   {member.avatar}
                 </div>
-                <h3 className="font-bold text-navy-DEFAULT">{member.name}</h3>
-                <p className="text-royal-DEFAULT text-sm font-medium mb-2">{member.role}</p>
+                <h3 className="font-bold text-navy">{member.name}</h3>
+                <p className="text-royal text-sm font-medium mb-2">{member.role}</p>
                 <p className="text-gray-500 text-xs">{member.desc}</p>
               </div>
             ))}

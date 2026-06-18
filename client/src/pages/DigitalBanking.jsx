@@ -35,7 +35,7 @@ export default function DigitalBanking() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
                 <div className="text-4xl mb-4">{f.icon}</div>
-                <h3 className="font-bold text-lg text-navy-DEFAULT font-display mb-2">{f.title}</h3>
+                <h3 className="font-bold text-lg text-navy font-display mb-2">{f.title}</h3>
                 <p className="text-gray-500 text-sm">{f.desc}</p>
               </motion.div>
             ))}

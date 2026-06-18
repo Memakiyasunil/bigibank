@@ -35,10 +35,10 @@ export default function Insurance() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
                 <div className="text-4xl mb-3">{plan.icon}</div>
-                <h3 className="font-bold text-lg text-navy-DEFAULT font-display mb-1">{plan.name}</h3>
+                <h3 className="font-bold text-lg text-navy font-display mb-1">{plan.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{plan.desc}</p>
                 <div className="flex items-center justify-between mb-4">
-                  <div><div className="text-xs text-gray-400">Max Cover</div><div className="font-bold text-navy-DEFAULT">{plan.cover}</div></div>
+                  <div><div className="text-xs text-gray-400">Max Cover</div><div className="font-bold text-navy">{plan.cover}</div></div>
                   <div className="text-right"><div className="text-xs text-gray-400">Premium</div><div className="font-bold text-emerald-bank">{plan.premium}</div></div>
                 </div>
                 <Link to="/register" className="btn btn-primary w-full justify-center">

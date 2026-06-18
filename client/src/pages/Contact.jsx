@@ -37,7 +37,7 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="space-y-4">
               {[
-                { icon: Phone, title: '24/7 Support Line', info: '1800-123-4567', sub: 'Toll Free · Mon–Sun', color: 'text-royal-DEFAULT bg-blue-50' },
+                { icon: Phone, title: '24/7 Support Line', info: '1800-123-4567', sub: 'Toll Free · Mon–Sun', color: 'text-royal bg-blue-50' },
                 { icon: Mail, title: 'Email Support', info: 'support@bigibank.com', sub: 'Response within 2 hours', color: 'text-emerald-bank bg-green-50' },
                 { icon: MapPin, title: 'Head Office', info: 'BigiBank Tower, Financial District', sub: 'Mumbai – 400001', color: 'text-orange-500 bg-orange-50' },
                 { icon: MessageCircle, title: 'Live Chat', info: 'Chat with us now', sub: 'Average wait: < 2 min', color: 'text-purple-600 bg-purple-50' },
@@ -47,8 +47,8 @@ export default function Contact() {
                     <Icon size={20} className={color.split(' ')[0]} />
                   </div>
                   <div>
-                    <div className="font-semibold text-navy-DEFAULT text-sm">{title}</div>
-                    <div className="font-bold text-navy-DEFAULT">{info}</div>
+                    <div className="font-semibold text-navy text-sm">{title}</div>
+                    <div className="font-bold text-navy">{info}</div>
                     <div className="text-gray-400 text-xs">{sub}</div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export default function Contact() {
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="glass-card rounded-3xl p-8">
-                <h2 className="font-display font-bold text-2xl text-navy-DEFAULT mb-6">Send us a Message</h2>
+                <h2 className="font-display font-bold text-2xl text-navy mb-6">Send us a Message</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="input-group">

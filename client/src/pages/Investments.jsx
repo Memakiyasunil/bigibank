@@ -36,7 +36,7 @@ export default function Investments() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
                 <div className="text-4xl mb-3">{inv.icon}</div>
-                <h3 className="font-bold text-lg text-navy-DEFAULT font-display mb-1">{inv.name}</h3>
+                <h3 className="font-bold text-lg text-navy font-display mb-1">{inv.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{inv.desc}</p>
                 <div className="flex items-center justify-between mb-4">
                   <div>
@@ -45,7 +45,7 @@ export default function Investments() {
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-gray-400">Min Amount</div>
-                    <div className="font-bold text-navy-DEFAULT">{inv.minAmount}</div>
+                    <div className="font-bold text-navy">{inv.minAmount}</div>
                   </div>
                 </div>
                 <span className={`badge mb-4 ${inv.risk === 'Low' ? 'badge-success' : inv.risk === 'High' ? 'badge-danger' : 'badge-warning'}`}>

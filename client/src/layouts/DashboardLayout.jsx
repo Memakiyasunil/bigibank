@@ -48,7 +48,7 @@ export default function DashboardLayout({ isAdmin = false }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-dvh bg-gray-50 flex pt-safe pb-safe pl-safe pr-safe">
       {/* Sidebar Overlay (mobile) */}
       <AnimatePresence>
         {sidebarOpen && (
@@ -70,8 +70,8 @@ export default function DashboardLayout({ isAdmin = false }) {
         {/* Logo */}
         <div className="p-6 border-b border-white/10">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-royal-DEFAULT to-royal-dark flex items-center justify-center">
-              <span className="text-gold-DEFAULT font-black text-lg">B</span>
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-royal to-royal-dark flex items-center justify-center">
+              <span className="text-gold font-black text-lg">B</span>
             </div>
             <div>
               <div className="font-black text-lg text-white font-display">BigiBank</div>
@@ -83,7 +83,7 @@ export default function DashboardLayout({ isAdmin = false }) {
         {/* User Info */}
         <div className="p-4 mx-3 mt-4 rounded-xl bg-white/6 border border-white/8">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-royal-DEFAULT to-gold-DEFAULT flex items-center justify-center text-white font-bold">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-royal to-gold flex items-center justify-center text-white font-bold">
               {user?.name?.[0]?.toUpperCase() || 'U'}
             </div>
             <div className="min-w-0">
@@ -127,12 +127,12 @@ export default function DashboardLayout({ isAdmin = false }) {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors text-navy-DEFAULT"
+              className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors text-navy"
             >
               <Menu size={20} />
             </button>
             <div>
-              <h1 className="text-lg font-bold text-navy-DEFAULT font-display">
+              <h1 className="text-lg font-bold text-navy font-display">
                 {navItems.find(n => n.path === location.pathname)?.label || 'Dashboard'}
               </h1>
               <p className="text-xs text-gray-400">
@@ -143,7 +143,7 @@ export default function DashboardLayout({ isAdmin = false }) {
 
           <div className="flex items-center gap-3">
             {/* Notifications */}
-            <button className="relative p-2.5 rounded-xl hover:bg-gray-100 transition-colors text-navy-DEFAULT">
+            <button className="relative p-2.5 rounded-xl hover:bg-gray-100 transition-colors text-navy">
               <Bell size={20} />
               {unreadCount > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
@@ -153,7 +153,7 @@ export default function DashboardLayout({ isAdmin = false }) {
             </button>
 
             {/* Avatar */}
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-royal-DEFAULT to-navy-DEFAULT flex items-center justify-center text-white font-bold text-sm">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-royal to-navy flex items-center justify-center text-white font-bold text-sm">
               {user?.name?.[0]?.toUpperCase() || 'U'}
             </div>
           </div>

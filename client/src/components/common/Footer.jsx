@@ -46,19 +46,19 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-DEFAULT text-white">
+    <footer className="bg-navy text-white">
       {/* Main Footer */}
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-royal-DEFAULT to-navy-light flex items-center justify-center">
-                <span className="text-gold-DEFAULT font-black text-xl">B</span>
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-royal to-navy-light flex items-center justify-center">
+                <span className="text-gold font-black text-xl">B</span>
               </div>
               <div>
                 <div className="font-black text-2xl font-display">
-                  Bigi<span className="text-royal-DEFAULT">Bank</span>
+                  Bigi<span className="text-royal">Bank</span>
                 </div>
                 <div className="text-xs text-white/50">Digital Banking Partner</div>
               </div>
@@ -70,15 +70,15 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm text-white/60">
-                <Phone size={14} className="text-gold-DEFAULT flex-shrink-0" />
+                <Phone size={14} className="text-gold flex-shrink-0" />
                 <span>1800-123-4567 (Toll Free)</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-white/60">
-                <Mail size={14} className="text-gold-DEFAULT flex-shrink-0" />
+                <Mail size={14} className="text-gold flex-shrink-0" />
                 <span>support@bigibank.com</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-white/60">
-                <MapPin size={14} className="text-gold-DEFAULT flex-shrink-0" />
+                <MapPin size={14} className="text-gold flex-shrink-0" />
                 <span>BigiBank Tower, Financial District, Mumbai - 400001</span>
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/8 hover:bg-royal-DEFAULT flex items-center justify-center transition-colors"
+                  className="w-9 h-9 rounded-lg bg-white/8 hover:bg-royal flex items-center justify-center transition-colors"
                 >
                   <Icon size={15} />
                 </a>
@@ -106,7 +106,7 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       to={link.path}
-                      className="text-sm text-white/55 hover:text-gold-DEFAULT transition-colors"
+                      className="text-sm text-white/55 hover:text-gold transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -129,7 +129,7 @@ export default function Footer() {
               { icon: Shield, text: 'DICGC Insured' },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="flex items-center gap-2 text-white/50 text-xs">
-                <Icon size={14} className="text-gold-DEFAULT" />
+                <Icon size={14} className="text-gold" />
                 <span>{text}</span>
               </div>
             ))}
@@ -139,7 +139,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/8">
-        <div className="container mx-auto px-6 py-5">
+        <div className="container mx-auto px-6 pt-5 pb-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-white/40 text-xs">
               © 2024 BigiBank. All rights reserved. | Regulated by Reserve Bank of India

@@ -25,7 +25,7 @@ export default function Loans() {
       <section className="bg-gradient-navy py-24 pt-32">
         <div className="container mx-auto px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gold-DEFAULT text-sm font-semibold mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gold text-sm font-semibold mb-6">
               <Banknote size={14} />
               Loan Services
             </span>
@@ -54,8 +54,8 @@ export default function Loans() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {FEATURES.map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-3 text-sm font-semibold text-navy-DEFAULT">
-                <Icon size={18} className="text-royal-DEFAULT" />
+              <div key={text} className="flex items-center gap-3 text-sm font-semibold text-navy">
+                <Icon size={18} className="text-royal" />
                 {text}
               </div>
             ))}
@@ -78,7 +78,7 @@ export default function Loans() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card hover:shadow-card-lg transition-all group"
               >
                 <div className="text-4xl mb-4">{loan.icon}</div>
-                <h3 className="font-bold text-xl text-navy-DEFAULT font-display mb-1">{loan.name}</h3>
+                <h3 className="font-bold text-xl text-navy font-display mb-1">{loan.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{loan.desc}</p>
                 <div className="grid grid-cols-3 gap-2 mb-5">
                   {[
@@ -87,7 +87,7 @@ export default function Loans() {
                     { label: 'Tenure', value: loan.tenure },
                   ].map(({ label, value }) => (
                     <div key={label} className="text-center p-2 bg-gray-50 rounded-xl">
-                      <div className="font-bold text-navy-DEFAULT text-sm">{value}</div>
+                      <div className="font-bold text-navy text-sm">{value}</div>
                       <div className="text-gray-400 text-xs">{label}</div>
                     </div>
                   ))}

@@ -37,7 +37,7 @@ export default function Blog() {
           <div className="flex flex-wrap gap-2 justify-center mb-10">
             {CATEGORIES.map((cat) => (
               <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${activeCategory === cat ? 'bg-royal-DEFAULT text-white shadow-royal' : 'bg-white text-navy-DEFAULT border border-gray-200 hover:border-royal-DEFAULT'}`}>
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all ${activeCategory === cat ? 'bg-royal text-white shadow-royal' : 'bg-white text-navy border border-gray-200 hover:border-royal'}`}>
                 {cat}
               </button>
             ))}
@@ -48,7 +48,7 @@ export default function Blog() {
                 viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                 className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
-                <div className="h-40 bg-gradient-to-br from-navy-DEFAULT to-royal-dark flex items-center justify-center">
+                <div className="h-40 bg-gradient-to-br from-navy to-royal-dark flex items-center justify-center">
                   <BookOpen size={48} className="text-white/30" />
                 </div>
                 <div className="p-6">
@@ -58,11 +58,11 @@ export default function Blog() {
                       <Clock size={11} />{post.readTime} min read
                     </div>
                   </div>
-                  <h3 className="font-bold text-navy-DEFAULT mb-2 line-clamp-2 font-display">{post.title}</h3>
+                  <h3 className="font-bold text-navy mb-2 line-clamp-2 font-display">{post.title}</h3>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-400 text-xs">{post.date}</span>
-                    <Link to={`/blog/${post.slug}`} className="text-royal-DEFAULT text-sm font-semibold flex items-center gap-1 hover:underline">
+                    <Link to={`/blog/${post.slug}`} className="text-royal text-sm font-semibold flex items-center gap-1 hover:underline">
                       Read <ArrowRight size={13} />
                     </Link>
                   </div>

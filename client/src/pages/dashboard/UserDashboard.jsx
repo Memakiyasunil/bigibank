@@ -17,7 +17,7 @@ import { accountAPI } from '../../services/api';
 ChartJS.register(ArcElement, Tooltip, Legend, LineElement, PointElement, LinearScale, CategoryScale, Filler);
 
 const QUICK_ACTIONS = [
-  { icon: Send, label: 'Transfer', color: 'bg-blue-100 text-royal-DEFAULT', path: '/dashboard/transfer' },
+  { icon: Send, label: 'Transfer', color: 'bg-blue-100 text-royal', path: '/dashboard/transfer' },
   { icon: Plus, label: 'Add Money', color: 'bg-green-100 text-emerald-bank', path: '/dashboard/deposit' },
   { icon: CreditCard, label: 'Pay Bills', color: 'bg-purple-100 text-purple-600', path: '/dashboard/bills' },
   { icon: BarChart3, label: 'Invest', color: 'bg-amber-100 text-gold-dark', path: '/investments' },
@@ -113,7 +113,7 @@ export default function UserDashboard() {
       >
         <div>
           <p className="text-gray-500 text-sm">{greeting()},</p>
-          <h2 className="font-display text-2xl font-bold text-navy-DEFAULT">
+          <h2 className="font-display text-2xl font-bold text-navy">
             {user?.name?.split(' ')[0] || 'User'} 👋
           </h2>
         </div>
@@ -135,7 +135,7 @@ export default function UserDashboard() {
       >
         {/* Background decorations */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gold-DEFAULT/8 rounded-full translate-y-1/2 -translate-x-1/4" />
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gold/8 rounded-full translate-y-1/2 -translate-x-1/4" />
 
         <div className="relative p-6 lg:p-8">
           <div className="flex items-start justify-between mb-6">
@@ -158,8 +158,8 @@ export default function UserDashboard() {
                 <span className="text-white/40 text-xs">(+5.4%)</span>
               </div>
             </div>
-            <div className="w-12 h-12 bg-gold-DEFAULT/20 rounded-2xl flex items-center justify-center">
-              <Wallet size={22} className="text-gold-DEFAULT" />
+            <div className="w-12 h-12 bg-gold/20 rounded-2xl flex items-center justify-center">
+              <Wallet size={22} className="text-gold" />
             </div>
           </div>
 
@@ -171,7 +171,7 @@ export default function UserDashboard() {
                 onClick={() => setSelectedAccount(acc)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
                   selectedAccount._id === acc._id
-                    ? 'bg-white text-navy-DEFAULT shadow-lg'
+                    ? 'bg-white text-navy shadow-lg'
                     : 'bg-white/10 text-white/80 hover:bg-white/15'
                 }`}
               >
@@ -203,7 +203,7 @@ export default function UserDashboard() {
       >
         {[
           { icon: TrendingUp, label: 'Investments', value: '₹6,12,000', change: '+18.4%', color: 'text-emerald-bank', bg: 'bg-emerald-50' },
-          { icon: CreditCard, label: 'Credit Limit', value: '₹5,00,000', change: '₹3,20,000 available', color: 'text-royal-DEFAULT', bg: 'bg-blue-50' },
+          { icon: CreditCard, label: 'Credit Limit', value: '₹5,00,000', change: '₹3,20,000 available', color: 'text-royal', bg: 'bg-blue-50' },
           { icon: Banknote, label: 'Active Loans', value: '₹8,50,000', change: 'EMI: ₹18,240/mo', color: 'text-orange-500', bg: 'bg-orange-50' },
           { icon: Shield, label: 'Insurance', value: '3 Active', change: 'All premiums paid', color: 'text-purple-600', bg: 'bg-purple-50' },
         ].map(({ icon: Icon, label, value, change, color, bg }) => (
@@ -214,7 +214,7 @@ export default function UserDashboard() {
               <Icon size={18} className={color} />
             </div>
             <p className="text-gray-500 text-xs mb-1">{label}</p>
-            <p className="font-bold text-navy-DEFAULT text-lg">{value}</p>
+            <p className="font-bold text-navy text-lg">{value}</p>
             <p className={`text-xs font-medium mt-0.5 ${color}`}>{change}</p>
           </motion.div>
         ))}
@@ -229,7 +229,7 @@ export default function UserDashboard() {
         >
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="font-bold text-navy-DEFAULT font-display">Balance Trend</h3>
+              <h3 className="font-bold text-navy font-display">Balance Trend</h3>
               <p className="text-gray-400 text-xs mt-0.5">Last 6 months savings account</p>
             </div>
             <span className="badge badge-info">+5.4% growth</span>
@@ -242,12 +242,12 @@ export default function UserDashboard() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
           className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card"
         >
-          <h3 className="font-bold text-navy-DEFAULT font-display mb-1">Spending Breakdown</h3>
+          <h3 className="font-bold text-navy font-display mb-1">Spending Breakdown</h3>
           <p className="text-gray-400 text-xs mb-4">June 2024</p>
           <Doughnut data={spendingData} options={doughnutOptions} />
           <div className="mt-4 text-center">
             <p className="text-gray-400 text-xs">Total Spent This Month</p>
-            <p className="font-bold text-navy-DEFAULT text-xl">₹42,350</p>
+            <p className="font-bold text-navy text-xl">₹42,350</p>
           </div>
         </motion.div>
       </div>
@@ -258,8 +258,8 @@ export default function UserDashboard() {
         className="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden"
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-50">
-          <h3 className="font-bold text-navy-DEFAULT font-display">Recent Transactions</h3>
-          <Link to="/dashboard/transactions" className="text-royal-DEFAULT text-sm font-semibold hover:underline flex items-center gap-1">
+          <h3 className="font-bold text-navy font-display">Recent Transactions</h3>
+          <Link to="/dashboard/transactions" className="text-royal text-sm font-semibold hover:underline flex items-center gap-1">
             View All <ArrowRight size={14} />
           </Link>
         </div>
@@ -274,7 +274,7 @@ export default function UserDashboard() {
                   }
                 </div>
                 <div>
-                  <p className="font-semibold text-navy-DEFAULT text-sm">{txn.desc}</p>
+                  <p className="font-semibold text-navy text-sm">{txn.desc}</p>
                   <p className="text-gray-400 text-xs">{txn.date}</p>
                 </div>
               </div>

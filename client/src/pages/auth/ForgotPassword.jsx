@@ -38,7 +38,7 @@ export default function ForgotPassword() {
           </div>
           {sent ? (
             <>
-              <h1 className="font-display text-2xl font-bold text-navy-DEFAULT mb-3">Check Your Email</h1>
+              <h1 className="font-display text-2xl font-bold text-navy mb-3">Check Your Email</h1>
               <p className="text-gray-500 text-sm mb-6">
                 We've sent a password reset link to <strong>{email}</strong>. 
                 The link will expire in 15 minutes.
@@ -49,7 +49,7 @@ export default function ForgotPassword() {
             </>
           ) : (
             <>
-              <h1 className="font-display text-2xl font-bold text-navy-DEFAULT mb-2">Forgot Password?</h1>
+              <h1 className="font-display text-2xl font-bold text-navy mb-2">Forgot Password?</h1>
               <p className="text-gray-500 text-sm mb-6">
                 Enter your registered email and we'll send you a secure reset link.
               </p>
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
                   {loading ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : 'Send Reset Link'}
                 </button>
               </form>
-              <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-navy-DEFAULT mt-4 transition-colors">
+              <Link to="/login" className="flex items-center justify-center gap-2 text-sm text-gray-500 hover:text-navy mt-4 transition-colors">
                 <ArrowLeft size={14} />Back to Login
               </Link>
             </>

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const CARDS = [
   { icon: '💎', name: 'BigiBank Platinum', type: 'credit', limit: '₹10 Lakh', rewards: '5X points', cashback: '2% on all spends', color: 'from-gray-700 to-gray-900', accent: '#9CA3AF' },
   { icon: '🥇', name: 'BigiBank Gold', type: 'credit', limit: '₹5 Lakh', rewards: '3X points', cashback: '1.5% on all spends', color: 'from-amber-600 to-yellow-700', accent: '#FFC107' },
-  { icon: '💳', name: 'BigiBank Classic', type: 'debit', limit: '₹2 Lakh/day', rewards: '1X points', cashback: '0.5% on online', color: 'from-navy-DEFAULT to-royal-dark', accent: '#0066FF' },
+  { icon: '💳', name: 'BigiBank Classic', type: 'debit', limit: '₹2 Lakh/day', rewards: '1X points', cashback: '0.5% on online', color: 'from-navy to-royal-dark', accent: '#0066FF' },
   { icon: '📱', name: 'Virtual Card', type: 'virtual', limit: '₹50,000', rewards: '2X online', cashback: '1% online cashback', color: 'from-purple-700 to-purple-900', accent: '#8B5CF6' },
 ];
 
@@ -36,7 +36,7 @@ export default function Cards() {
                 {/* Mini Card Visual */}
                 <div className={`bank-card bg-gradient-to-br ${card.color} mb-6 w-full max-w-xs mx-auto`} style={{ height: '160px' }}>
                   <div className="flex justify-between items-start mb-6">
-                    <div className="w-8 h-5 bg-gold-DEFAULT/60 rounded" />
+                    <div className="w-8 h-5 bg-gold/60 rounded" />
                     <span className="text-white/60 text-xs font-mono uppercase">{card.type}</span>
                   </div>
                   <div className="text-white/80 font-mono text-xs tracking-widest">**** **** **** 0000</div>
@@ -49,7 +49,7 @@ export default function Cards() {
                     { label: 'Cashback', value: card.cashback },
                   ].map(({ label, value }) => (
                     <div key={label} className="text-center p-2 bg-gray-50 rounded-xl">
-                      <div className="font-bold text-navy-DEFAULT text-xs">{value}</div>
+                      <div className="font-bold text-navy text-xs">{value}</div>
                       <div className="text-gray-400 text-xs">{label}</div>
                     </div>
                   ))}

@@ -35,11 +35,11 @@ export default function Accounts() {
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
                 <div className="text-4xl mb-3">{acc.icon}</div>
-                <h3 className="font-bold text-xl text-navy-DEFAULT font-display mb-1">{acc.name}</h3>
+                <h3 className="font-bold text-xl text-navy font-display mb-1">{acc.name}</h3>
                 <p className="text-gray-500 text-sm mb-4">{acc.desc}</p>
                 <div className="flex gap-4 mb-4">
                   <div><div className="text-xs text-gray-400">Interest Rate</div><div className="font-bold text-emerald-bank">{acc.rate}</div></div>
-                  <div><div className="text-xs text-gray-400">Min Balance</div><div className="font-bold text-navy-DEFAULT">{acc.minBal}</div></div>
+                  <div><div className="text-xs text-gray-400">Min Balance</div><div className="font-bold text-navy">{acc.minBal}</div></div>
                 </div>
                 <Link to="/register" className="btn btn-primary w-full justify-center">Open Account <ArrowRight size={15} /></Link>
               </motion.div>

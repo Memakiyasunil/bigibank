@@ -55,18 +55,18 @@ export default function LoanApply() {
   return (
     <div className="min-h-screen bg-bg-primary pt-20 pb-16">
       <div className="container mx-auto px-6 max-w-3xl">
-        <Link to="/loans" className="inline-flex items-center gap-2 text-royal-DEFAULT hover:underline mb-8 font-medium">
+        <Link to="/loans" className="inline-flex items-center gap-2 text-royal hover:underline mb-8 font-medium">
           <ArrowLeft size={16} />Back to Loans
         </Link>
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}>
           <div className="text-center mb-10">
-            <h1 className="font-display text-3xl font-bold text-navy-DEFAULT mb-2">Loan Application</h1>
+            <h1 className="font-display text-3xl font-bold text-navy mb-2">Loan Application</h1>
             <p className="text-gray-500">Fill in your details to apply. 48-hour approval guaranteed.</p>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="glass-card rounded-3xl p-8 space-y-5">
-              <h2 className="font-bold text-navy-DEFAULT font-display">Loan Details</h2>
+              <h2 className="font-bold text-navy font-display">Loan Details</h2>
 
               {/* Loan Type Selector */}
               <div className="input-group">
@@ -75,9 +75,9 @@ export default function LoanApply() {
                   {LOAN_TYPES.map((lt) => (
                     <label key={lt.value} className="cursor-pointer">
                       <input type="radio" {...register('loanType', { required: 'Select loan type' })} value={lt.value} className="sr-only peer" />
-                      <div className="p-3 border-2 border-gray-200 rounded-xl peer-checked:border-royal-DEFAULT peer-checked:bg-blue-50 transition-all text-center">
+                      <div className="p-3 border-2 border-gray-200 rounded-xl peer-checked:border-royal peer-checked:bg-blue-50 transition-all text-center">
                         <div className="text-2xl mb-1">{lt.icon}</div>
-                        <div className="text-xs font-semibold text-navy-DEFAULT">{lt.label}</div>
+                        <div className="text-xs font-semibold text-navy">{lt.label}</div>
                         <div className="text-xs text-gray-400">{lt.rate}% p.a.</div>
                       </div>
                     </label>
@@ -120,7 +120,7 @@ export default function LoanApply() {
             </div>
 
             <div className="glass-card rounded-3xl p-8 space-y-4">
-              <h2 className="font-bold text-navy-DEFAULT font-display">Employment Details</h2>
+              <h2 className="font-bold text-navy font-display">Employment Details</h2>
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="input-group">
                   <label className="input-label">Employment Type *</label>

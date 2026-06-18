@@ -14,7 +14,7 @@ function EMICalc() {
 
   return (
     <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-card">
-      <h3 className="font-display font-bold text-xl text-navy-DEFAULT mb-6">EMI Calculator</h3>
+      <h3 className="font-display font-bold text-xl text-navy mb-6">EMI Calculator</h3>
       <div className="space-y-5">
         {[
           { label: 'Loan Amount (₹)', value: p, set: setP, min: 10000, max: 10000000, step: 10000, format: (v) => `₹${parseInt(v).toLocaleString()}` },
@@ -23,19 +23,19 @@ function EMICalc() {
         ].map(({ label, value, set, min, max, step, format }) => (
           <div key={label}>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-semibold text-navy-DEFAULT">{label}</label>
-              <span className="text-sm font-bold text-royal-DEFAULT">{format(value)}</span>
+              <label className="text-sm font-semibold text-navy">{label}</label>
+              <span className="text-sm font-bold text-royal">{format(value)}</span>
             </div>
             <input type="range" min={min} max={max} step={step} value={value}
               onChange={(e) => set(parseFloat(e.target.value))}
-              className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer accent-royal-DEFAULT"
+              className="w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer accent-royal"
             />
           </div>
         ))}
       </div>
       <div className="mt-8 p-5 bg-gradient-navy rounded-2xl text-white grid grid-cols-3 gap-4 text-center">
         <div><div className="text-white/60 text-xs mb-1">Monthly EMI</div><div className="font-black text-xl">₹{Math.round(emi).toLocaleString()}</div></div>
-        <div><div className="text-white/60 text-xs mb-1">Total Interest</div><div className="font-black text-xl text-gold-DEFAULT">₹{Math.round(interest).toLocaleString()}</div></div>
+        <div><div className="text-white/60 text-xs mb-1">Total Interest</div><div className="font-black text-xl text-gold">₹{Math.round(interest).toLocaleString()}</div></div>
         <div><div className="text-white/60 text-xs mb-1">Total Payment</div><div className="font-black text-xl">₹{Math.round(total).toLocaleString()}</div></div>
       </div>
     </div>
@@ -55,7 +55,7 @@ function SIPCalc() {
 
   return (
     <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-card">
-      <h3 className="font-display font-bold text-xl text-navy-DEFAULT mb-6">SIP Calculator</h3>
+      <h3 className="font-display font-bold text-xl text-navy mb-6">SIP Calculator</h3>
       <div className="space-y-5">
         {[
           { label: 'Monthly SIP (₹)', value: sip, set: setSip, min: 500, max: 200000, step: 500, format: (v) => `₹${parseInt(v).toLocaleString()}` },
@@ -64,8 +64,8 @@ function SIPCalc() {
         ].map(({ label, value, set, min, max, step, format }) => (
           <div key={label}>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-semibold text-navy-DEFAULT">{label}</label>
-              <span className="text-sm font-bold text-royal-DEFAULT">{format(value)}</span>
+              <label className="text-sm font-semibold text-navy">{label}</label>
+              <span className="text-sm font-bold text-royal">{format(value)}</span>
             </div>
             <input type="range" min={min} max={max} step={step} value={value}
               onChange={(e) => set(parseFloat(e.target.value))}
@@ -88,7 +88,7 @@ export default function Calculators() {
     <div className="pt-20 pb-16 bg-bg-primary min-h-screen">
       <div className="container mx-auto px-6">
         <div className="text-center py-12">
-          <h1 className="font-display text-4xl font-bold text-navy-DEFAULT mb-3">Financial Calculators</h1>
+          <h1 className="font-display text-4xl font-bold text-navy mb-3">Financial Calculators</h1>
           <p className="text-gray-500">Plan your finances smarter with our interactive calculators</p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">

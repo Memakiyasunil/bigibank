@@ -26,7 +26,7 @@ export default function HelpCenter() {
             <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
             <input value={search} onChange={e => setSearch(e.target.value)}
               placeholder="Search for answers..."
-              className="w-full pl-11 pr-4 py-3 rounded-2xl border-none outline-none text-navy-DEFAULT bg-white shadow-lg" />
+              className="w-full pl-11 pr-4 py-3 rounded-2xl border-none outline-none text-navy bg-white shadow-lg" />
           </div>
         </div>
       </section>
@@ -39,7 +39,7 @@ export default function HelpCenter() {
                 className="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors">
-                  <span className="font-semibold text-navy-DEFAULT">{faq.q}</span>
+                  <span className="font-semibold text-navy">{faq.q}</span>
                   <ChevronDown size={18} className={`text-gray-400 flex-shrink-0 ml-4 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
                 {openFaq === i && (

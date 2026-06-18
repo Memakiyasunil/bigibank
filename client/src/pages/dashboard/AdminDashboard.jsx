@@ -90,7 +90,7 @@ export default function AdminDashboard() {
         </span>}
       </div>
       <p className="text-gray-400 text-xs mb-1">{label}</p>
-      <p className="font-black text-2xl text-navy-DEFAULT font-display">{value}</p>
+      <p className="font-black text-2xl text-navy font-display">{value}</p>
     </motion.div>
   );
 
@@ -99,7 +99,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="font-display text-2xl font-bold text-navy-DEFAULT">Admin Dashboard</h2>
+          <h2 className="font-display text-2xl font-bold text-navy">Admin Dashboard</h2>
           <p className="text-gray-400 text-sm mt-0.5">Overview of all banking operations</p>
         </div>
         <div className="flex items-center gap-2">
@@ -125,7 +125,7 @@ export default function AdminDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={Users} label="Total Users" value={stats.totalUsers.toLocaleString()} change={12} color="text-royal-DEFAULT" bg="bg-blue-50" />
+        <StatCard icon={Users} label="Total Users" value={stats.totalUsers.toLocaleString()} change={12} color="text-royal" bg="bg-blue-50" />
         <StatCard icon={DollarSign} label="Transaction Volume" value={`₹${(stats.totalVolume / 10000000).toFixed(0)}Cr`} change={18} color="text-emerald-bank" bg="bg-green-50" />
         <StatCard icon={Banknote} label="Pending Loans" value={stats.pendingLoans} color="text-orange-500" bg="bg-orange-50" />
         <StatCard icon={TicketCheck} label="Open Tickets" value={stats.openTickets} color="text-purple-600" bg="bg-purple-50" />
@@ -134,11 +134,11 @@ export default function AdminDashboard() {
       {/* Charts */}
       <div className="grid lg:grid-cols-2 gap-6">
         <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card">
-          <h3 className="font-bold text-navy-DEFAULT font-display mb-4">Revenue Overview</h3>
+          <h3 className="font-bold text-navy font-display mb-4">Revenue Overview</h3>
           <Bar data={revenueData} options={barOptions} height={200} />
         </div>
         <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card">
-          <h3 className="font-bold text-navy-DEFAULT font-display mb-4">User Growth</h3>
+          <h3 className="font-bold text-navy font-display mb-4">User Growth</h3>
           <Line data={userGrowthData} options={{ ...barOptions, plugins: { legend: { display: false } } }} height={200} />
         </div>
       </div>
@@ -147,7 +147,7 @@ export default function AdminDashboard() {
       <div className="bg-white rounded-2xl border border-gray-100 shadow-card overflow-hidden">
         <div className="flex items-center justify-between p-6 border-b border-gray-50">
           <div>
-            <h3 className="font-bold text-navy-DEFAULT font-display">Pending Loan Approvals</h3>
+            <h3 className="font-bold text-navy font-display">Pending Loan Approvals</h3>
             <p className="text-gray-400 text-xs">{stats.pendingLoans} loans awaiting review</p>
           </div>
           <button className="btn btn-outline btn-sm">View All</button>
@@ -164,10 +164,10 @@ export default function AdminDashboard() {
             <tbody className="divide-y divide-gray-50">
               {pendingLoans.map((loan) => (
                 <tr key={loan.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4 text-sm font-mono text-royal-DEFAULT">{loan.id}</td>
-                  <td className="px-6 py-4 text-sm font-semibold text-navy-DEFAULT">{loan.user}</td>
+                  <td className="px-6 py-4 text-sm font-mono text-royal">{loan.id}</td>
+                  <td className="px-6 py-4 text-sm font-semibold text-navy">{loan.user}</td>
                   <td className="px-6 py-4"><span className="badge badge-info">{loan.type}</span></td>
-                  <td className="px-6 py-4 text-sm font-bold text-navy-DEFAULT">₹{loan.amount.toLocaleString()}</td>
+                  <td className="px-6 py-4 text-sm font-bold text-navy">₹{loan.amount.toLocaleString()}</td>
                   <td className="px-6 py-4">
                     <span className={`badge ${loan.creditScore >= 750 ? 'badge-success' : loan.creditScore >= 700 ? 'badge-warning' : 'badge-danger'}`}>
                       {loan.creditScore}
@@ -197,7 +197,7 @@ export default function AdminDashboard() {
       {/* Bottom Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { icon: UserCheck, label: 'Active Users', value: stats.activeUsers.toLocaleString(), desc: `${((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}% of total`, color: 'text-royal-DEFAULT', bg: 'bg-blue-50' },
+          { icon: UserCheck, label: 'Active Users', value: stats.activeUsers.toLocaleString(), desc: `${((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}% of total`, color: 'text-royal', bg: 'bg-blue-50' },
           { icon: TrendingUp, label: 'Active Investments', value: stats.totalInvestments.toLocaleString(), desc: 'Portfolios being managed', color: 'text-emerald-bank', bg: 'bg-green-50' },
           { icon: Clock, label: 'Avg Response Time', value: '< 2 min', desc: 'Customer support SLA', color: 'text-gold-dark', bg: 'bg-amber-50' },
         ].map(({ icon: Icon, label, value, desc, color, bg }) => (
@@ -207,7 +207,7 @@ export default function AdminDashboard() {
             </div>
             <div>
               <p className="text-gray-400 text-xs">{label}</p>
-              <p className="font-bold text-navy-DEFAULT text-xl">{value}</p>
+              <p className="font-bold text-navy text-xl">{value}</p>
               <p className="text-gray-400 text-xs">{desc}</p>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
-import { logout } from '../redux/slices/authSlice';
+import { logout } from "../../redux/slices/authSlice";
 import {
   Home, CreditCard, TrendingUp, Shield, Calculator, Banknote,
   ChevronDown, Menu, X, LogIn, UserPlus, User, LogOut,
@@ -99,7 +99,7 @@ export default function Navbar() {
     : 'bg-white/95 backdrop-blur-xl shadow-md border-b border-white/20';
 
   const textColor = isHome && !isScrolled ? 'text-white' : 'text-gray-800';
-  const logoColor = isHome && !isScrolled ? 'text-gold-DEFAULT' : 'text-navy-DEFAULT';
+  const logoColor = isHome && !isScrolled ? 'text-gold' : 'text-navy';
 
   return (
     <nav
@@ -111,11 +111,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 flex-shrink-0">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-royal to-navy flex items-center justify-center shadow-royal">
-              <span className="text-gold-DEFAULT font-black text-lg">B</span>
+              <span className="text-gold font-black text-lg">B</span>
             </div>
             <div>
               <span className={`font-black text-xl tracking-tight font-display ${logoColor}`}>
-                Bigi<span className="text-royal-DEFAULT">Bank</span>
+                Bigi<span className="text-royal">Bank</span>
               </span>
               <div className={`text-xs ${isHome && !isScrolled ? 'text-white/60' : 'text-gray-400'} leading-none`}>
                 Digital Banking
@@ -170,7 +170,7 @@ export default function Navbar() {
                             to={item.path}
                             className="flex flex-col px-4 py-3 rounded-xl hover:bg-blue-50 transition-colors group"
                           >
-                            <span className="font-semibold text-navy-DEFAULT text-sm group-hover:text-royal-DEFAULT transition-colors">
+                            <span className="font-semibold text-navy text-sm group-hover:text-royal transition-colors">
                               {item.label}
                             </span>
                             {item.desc && (
@@ -204,16 +204,16 @@ export default function Navbar() {
                   </button>
                   <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200">
                     <div className="p-3 border-b border-gray-50">
-                      <p className="font-semibold text-navy-DEFAULT text-sm">{user?.name}</p>
+                      <p className="font-semibold text-navy text-sm">{user?.name}</p>
                       <p className="text-xs text-gray-400">{user?.email}</p>
                     </div>
                     <div className="p-2">
                       {user?.role === 'admin' && (
-                        <Link to="/admin" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-sm text-navy-DEFAULT transition-colors">
+                        <Link to="/admin" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-sm text-navy transition-colors">
                           <Shield size={15} />Admin Panel
                         </Link>
                       )}
-                      <Link to="/dashboard" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-sm text-navy-DEFAULT transition-colors">
+                      <Link to="/dashboard" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 text-sm text-navy transition-colors">
                         <User size={15} />My Profile
                       </Link>
                       <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-red-50 text-sm text-red-500 w-full transition-colors">
@@ -262,7 +262,7 @@ export default function Navbar() {
                     <div>
                       <button
                         onClick={() => setActiveDropdown(activeDropdown === link.label ? null : link.label)}
-                        className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-navy-DEFAULT font-semibold text-sm hover:bg-gray-50"
+                        className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-navy font-semibold text-sm hover:bg-gray-50"
                       >
                         {link.label}
                         <ChevronDown size={14} className={`transition-transform ${activeDropdown === link.label ? 'rotate-180' : ''}`} />
@@ -276,7 +276,7 @@ export default function Navbar() {
                             className="ml-4 mt-1 space-y-1 overflow-hidden"
                           >
                             {link.dropdown.map((item) => (
-                              <Link key={item.label} to={item.path} className="block px-4 py-2 text-sm text-gray-600 hover:text-royal-DEFAULT hover:bg-blue-50 rounded-lg transition-colors">
+                              <Link key={item.label} to={item.path} className="block px-4 py-2 text-sm text-gray-600 hover:text-royal hover:bg-blue-50 rounded-lg transition-colors">
                                 {item.label}
                               </Link>
                             ))}
@@ -285,7 +285,7 @@ export default function Navbar() {
                       </AnimatePresence>
                     </div>
                   ) : (
-                    <Link to={link.path} className="block px-4 py-3 rounded-xl text-navy-DEFAULT font-semibold text-sm hover:bg-gray-50">
+                    <Link to={link.path} className="block px-4 py-3 rounded-xl text-navy font-semibold text-sm hover:bg-gray-50">
                       {link.label}
                     </Link>
                   )}

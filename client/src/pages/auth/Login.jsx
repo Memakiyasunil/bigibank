@@ -38,12 +38,12 @@ export default function Login() {
       {/* Left Panel */}
       <div className="hidden lg:flex flex-1 bg-gradient-navy relative overflow-hidden items-center justify-center">
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-royal-DEFAULT/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gold-DEFAULT/15 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-royal/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gold/15 rounded-full blur-3xl" />
         </div>
         <div className="relative z-10 text-center px-12">
-          <div className="w-16 h-16 bg-gradient-to-br from-royal-DEFAULT to-navy-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-royal">
-            <span className="text-gold-DEFAULT font-black text-3xl">B</span>
+          <div className="w-16 h-16 bg-gradient-to-br from-royal to-navy-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-royal">
+            <span className="text-gold font-black text-3xl">B</span>
           </div>
           <h2 className="font-display text-4xl font-bold text-white mb-4">
             Welcome Back to<br />
@@ -58,7 +58,7 @@ export default function Login() {
               { icon: Lock, text: '256-bit Encryption' },
             ].map(({ icon: Icon, text }) => (
               <div key={text} className="glass rounded-xl p-3 text-center">
-                <Icon size={18} className="text-gold-DEFAULT mx-auto mb-1" />
+                <Icon size={18} className="text-gold mx-auto mb-1" />
                 <div className="text-white/70 text-xs">{text}</div>
               </div>
             ))}
@@ -77,18 +77,18 @@ export default function Login() {
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-royal-DEFAULT to-navy-DEFAULT rounded-xl flex items-center justify-center">
-                <span className="text-gold-DEFAULT font-black text-xl">B</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-royal to-navy rounded-xl flex items-center justify-center">
+                <span className="text-gold font-black text-xl">B</span>
               </div>
-              <span className="font-black text-2xl font-display text-navy-DEFAULT">
-                Bigi<span className="text-royal-DEFAULT">Bank</span>
+              <span className="font-black text-2xl font-display text-navy">
+                Bigi<span className="text-royal">Bank</span>
               </span>
             </Link>
           </div>
 
           <div className="glass-card rounded-3xl p-8">
             <div className="mb-8">
-              <h1 className="font-display text-2xl font-bold text-navy-DEFAULT mb-1">Sign In</h1>
+              <h1 className="font-display text-2xl font-bold text-navy mb-1">Sign In</h1>
               <p className="text-gray-500 text-sm">Access your BigiBank account securely</p>
             </div>
 
@@ -121,7 +121,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-navy-DEFAULT transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-navy transition-colors"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -131,10 +131,10 @@ export default function Login() {
 
               <div className="flex items-center justify-between text-sm">
                 <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" className="w-4 h-4 rounded accent-royal-DEFAULT" />
+                  <input type="checkbox" className="w-4 h-4 rounded accent-royal" />
                   <span className="text-gray-600">Remember me</span>
                 </label>
-                <Link to="/forgot-password" className="text-royal-DEFAULT hover:underline font-medium">
+                <Link to="/forgot-password" className="text-royal hover:underline font-medium">
                   Forgot Password?
                 </Link>
               </div>
@@ -158,7 +158,7 @@ export default function Login() {
             <div className="mt-6 text-center">
               <p className="text-gray-500 text-sm">
                 Don't have an account?{' '}
-                <Link to="/register" className="text-royal-DEFAULT font-semibold hover:underline">
+                <Link to="/register" className="text-royal font-semibold hover:underline">
                   Open Free Account
                 </Link>
               </p>

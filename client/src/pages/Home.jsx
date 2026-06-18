@@ -56,7 +56,7 @@ const SERVICES = [
     desc: 'Savings, Current, FD & RD accounts with industry-leading interest rates and zero maintenance fees.',
     bg: 'bg-blue-50',
     iconBg: 'bg-blue-100',
-    iconColor: 'text-royal-DEFAULT',
+    iconColor: 'text-royal',
     link: '/accounts',
   },
   {
@@ -156,11 +156,11 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* ── HERO SECTION ──────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex items-center bg-gradient-navy overflow-hidden">
+      <section className="relative min-h-dvh flex items-center bg-gradient-navy overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-royal-DEFAULT/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gold-DEFAULT/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-royal/20 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gold/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
           <div className="absolute top-1/2 right-1/3 w-64 h-64 bg-emerald-bank/10 rounded-full blur-3xl" />
         </div>
 
@@ -173,7 +173,7 @@ export default function Home() {
           }}
         />
 
-        <div className="container mx-auto px-6 relative z-10 pt-20 pb-16">
+        <div className="container mx-auto px-6 relative z-10 pt-32 lg:pt-48 pb-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div
@@ -185,7 +185,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gold-DEFAULT text-sm font-semibold mb-6"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-gold text-sm font-semibold mb-6"
               >
                 <span className="w-2 h-2 bg-emerald-bank rounded-full animate-pulse" />
                 Trusted by 1M+ customers across India
@@ -245,7 +245,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-2xl" />
                   {/* Chip */}
                   <div className="flex items-center justify-between mb-8">
-                    <div className="w-10 h-7 bg-gold-DEFAULT/80 rounded-md flex items-center justify-center">
+                    <div className="w-10 h-7 bg-gold/80 rounded-md flex items-center justify-center">
                       <div className="w-6 h-5 border border-gold-dark/40 rounded-sm opacity-70" />
                     </div>
                     <div className="text-white/60 text-xs font-mono">VISA</div>
@@ -318,10 +318,10 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center p-8 rounded-2xl bg-white border border-gray-100 shadow-card hover:shadow-card-lg transition-all group"
               >
-                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-royal-dark to-royal-DEFAULT flex items-center justify-center shadow-royal">
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-royal-dark to-royal flex items-center justify-center shadow-royal">
                   <Icon size={22} className="text-white" />
                 </div>
-                <div className="font-black text-4xl text-navy-DEFAULT font-display mb-1">
+                <div className="font-black text-4xl text-navy font-display mb-1">
                   <AnimatedCounter end={number} suffix={suffix} prefix={prefix} />
                 </div>
                 <div className="text-gray-500 text-sm font-medium">{label}</div>
@@ -368,11 +368,11 @@ export default function Home() {
                   <div className={`service-icon ${service.iconBg} mb-5`}>
                     <span className="text-3xl">{service.emoji}</span>
                   </div>
-                  <h3 className="font-bold text-lg text-navy-DEFAULT mb-2 font-display group-hover:text-royal-DEFAULT transition-colors">
+                  <h3 className="font-bold text-lg text-navy mb-2 font-display group-hover:text-royal transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed mb-4">{service.desc}</p>
-                  <div className="flex items-center gap-1 text-royal-DEFAULT text-sm font-semibold">
+                  <div className="flex items-center gap-1 text-royal text-sm font-semibold">
                     Learn More <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
@@ -407,7 +407,7 @@ export default function Home() {
                 >
                   <div className="text-3xl mb-2">{loan.icon}</div>
                   <div className="text-white font-semibold text-sm mb-1">{loan.name}</div>
-                  <div className="text-gold-DEFAULT font-black text-xl">from {loan.rate}</div>
+                  <div className="text-gold font-black text-xl">from {loan.rate}</div>
                   <div className="text-white/50 text-xs mt-1">per annum</div>
                 </Link>
               </motion.div>
@@ -456,7 +456,7 @@ export default function Home() {
                       <Icon size={18} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-navy-DEFAULT text-sm">{title}</h3>
+                      <h3 className="font-bold text-navy text-sm">{title}</h3>
                       <p className="text-gray-500 text-sm mt-0.5">{desc}</p>
                     </div>
                   </motion.div>
@@ -476,7 +476,7 @@ export default function Home() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <div className="text-xs text-gray-400 mb-1">Total Balance</div>
-                    <div className="font-black text-3xl text-navy-DEFAULT font-display">₹12,48,320</div>
+                    <div className="font-black text-3xl text-navy font-display">₹12,48,320</div>
                     <div className="text-emerald-bank text-xs font-semibold mt-1">+₹24,500 this month ↑</div>
                   </div>
                   <div className="w-12 h-12 bg-gradient-royal rounded-2xl flex items-center justify-center shadow-royal">
@@ -499,13 +499,13 @@ export default function Home() {
                 {/* Account Pills */}
                 <div className="space-y-3">
                   {[
-                    { label: 'Savings Account', amount: '₹4,82,320', color: 'bg-blue-50 text-royal-DEFAULT' },
+                    { label: 'Savings Account', amount: '₹4,82,320', color: 'bg-blue-50 text-royal' },
                     { label: 'Investment Portfolio', amount: '₹6,12,000', color: 'bg-emerald-50 text-emerald-bank' },
                     { label: 'Fixed Deposits', amount: '₹1,54,000', color: 'bg-amber-50 text-gold-dark' },
                   ].map(({ label, amount, color }) => (
                     <div key={label} className={`flex items-center justify-between px-4 py-3 rounded-xl ${color.split(' ')[0]}`}>
                       <span className={`text-sm font-semibold ${color.split(' ')[1]}`}>{label}</span>
-                      <span className="font-bold text-navy-DEFAULT text-sm">{amount}</span>
+                      <span className="font-bold text-navy text-sm">{amount}</span>
                     </div>
                   ))}
                 </div>
@@ -513,7 +513,7 @@ export default function Home() {
 
               {/* Floating badge */}
               <div className="absolute -top-4 -right-4 bg-gradient-gold rounded-2xl px-4 py-2 shadow-gold">
-                <div className="text-navy-DEFAULT font-bold text-xs">🏆 Best Digital Bank 2024</div>
+                <div className="text-navy font-bold text-xs">🏆 Best Digital Bank 2024</div>
               </div>
             </motion.div>
           </div>
@@ -550,7 +550,7 @@ export default function Home() {
               <motion.div key={t.name} variants={fadeUp}
                 className="p-6 bg-white rounded-2xl border border-gray-100 shadow-card hover:shadow-card-lg transition-all"
               >
-                <div className="flex items-center gap-1 text-gold-DEFAULT mb-4">
+                <div className="flex items-center gap-1 text-gold mb-4">
                   {Array.from({ length: t.rating }).map((_, j) => (
                     <Star key={j} size={14} fill="currentColor" />
                   ))}
@@ -561,7 +561,7 @@ export default function Home() {
                     {t.avatar}
                   </div>
                   <div>
-                    <div className="font-bold text-navy-DEFAULT text-sm">{t.name}</div>
+                    <div className="font-bold text-navy text-sm">{t.name}</div>
                     <div className="text-xs text-gray-400">{t.role}</div>
                   </div>
                 </div>
@@ -574,8 +574,8 @@ export default function Home() {
       {/* ── CTA BANNER ────────────────────────────────────────────── */}
       <section className="py-20 bg-gradient-navy relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/3 w-72 h-72 bg-royal-DEFAULT/25 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-gold-DEFAULT/15 rounded-full blur-3xl" />
+          <div className="absolute top-0 left-1/3 w-72 h-72 bg-royal/25 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/3 w-64 h-64 bg-gold/15 rounded-full blur-3xl" />
         </div>
         <div className="container mx-auto px-6 relative text-center">
           <motion.div

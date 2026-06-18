@@ -35,8 +35,8 @@ export default function Careers() {
               { icon: Briefcase, title: 'Great Benefits', desc: 'Health insurance, ESOPs, flexible working, and more.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card text-center">
-                <Icon size={32} className="text-royal-DEFAULT mx-auto mb-3" />
-                <h3 className="font-bold text-navy-DEFAULT mb-2">{title}</h3>
+                <Icon size={32} className="text-royal mx-auto mb-3" />
+                <h3 className="font-bold text-navy mb-2">{title}</h3>
                 <p className="text-gray-500 text-sm">{desc}</p>
               </div>
             ))}
@@ -46,7 +46,7 @@ export default function Careers() {
             {JOBS.map((job) => (
               <div key={job.title} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-card flex items-center justify-between hover:shadow-card-lg transition-all">
                 <div>
-                  <h3 className="font-bold text-navy-DEFAULT">{job.title}</h3>
+                  <h3 className="font-bold text-navy">{job.title}</h3>
                   <div className="flex items-center gap-3 mt-1">
                     <span className="badge badge-info">{job.dept}</span>
                     <span className="text-gray-400 text-xs">{job.location}</span>
