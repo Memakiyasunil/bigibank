@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  mongo:
+    image: mongo:latest
+    container_name: bigibank-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
   server:
     build:
       context: ./server
@@ -8,10 +17,14 @@ services:
     container_name: bigibank-server
     ports:
       - "5000:5000"
-    env_file:
-      - ./server/.env
     environment:
       - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/bigibank
+      - JWT_SECRET=bigibank_super_secret_jwt_key_2024_production
+      - JWT_EXPIRE=7d
+      - PORT=5000
+    depends_on:
+      - mongo
     restart: unless-stopped
 
   client:
@@ -20,7 +33,10 @@ services:
       dockerfile: Dockerfile
     container_name: bigibank-client
     ports:
-      - "5173:80" # Maps the standard Vite dev port to the container's Nginx port (80)
+      - "5173:80"
     depends_on:
       - server
     restart: unless-stopped
+
+volumes:
+  mongo-data:
