@@ -22,17 +22,8 @@ connectDB();
 app.use(helmet());
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    // In development, allow any localhost port
-    if (origin.startsWith('http://localhost:')) {
-      return callback(null, true);
-    }
-    // Otherwise check against process.env.CLIENT_URL
-    if (origin === process.env.CLIENT_URL) {
-      return callback(null, true);
-    }
-    return callback(new Error('Not allowed by CORS'));
+    // Allow ALL origins dynamically for this deployment
+    return callback(null, true);
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
