@@ -24,18 +24,26 @@ import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 
 // Service Pages
-import Loans from './pages/Loans';
+import PublicLoans from './pages/Loans';
 import LoanApply from './pages/LoanApply';
-import Investments from './pages/Investments';
-import Insurance from './pages/Insurance';
-import Cards from './pages/Cards';
+import PublicInvestments from './pages/Investments';
+import PublicInsurance from './pages/Insurance';
+import PublicCards from './pages/Cards';
 import Accounts from './pages/Accounts';
 import DigitalBanking from './pages/DigitalBanking';
 import Calculators from './pages/Calculators';
 
-// Dashboard
-import UserDashboard from './pages/dashboard/UserDashboard';
+// Dashboard Pages
+import Overview from './pages/dashboard/Overview';
 import AdminDashboard from './pages/dashboard/AdminDashboard';
+import MyAccounts from './pages/dashboard/MyAccounts';
+import Transactions from './pages/dashboard/Transactions';
+import Cards from './pages/dashboard/Cards';
+import Loans from './pages/dashboard/Loans';
+import Investments from './pages/dashboard/Investments';
+import Insurance from './pages/dashboard/Insurance';
+import Payments from './pages/dashboard/Payments';
+import Settings from './pages/dashboard/Settings';
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children, adminOnly = false }) => {
@@ -59,12 +67,12 @@ const AppRoutes = () => {
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
         <Route path="/help" element={<HelpCenter />} />
-        <Route path="/loans" element={<Loans />} />
-        <Route path="/loans/apply" element={<LoanApply />} />
-        <Route path="/investments" element={<Investments />} />
-        <Route path="/insurance" element={<Insurance />} />
-        <Route path="/cards" element={<Cards />} />
-        <Route path="/accounts" element={<Accounts />} />
+        <Route path="/loans-info" element={<PublicLoans />} />
+        <Route path="/loans-info/apply" element={<LoanApply />} />
+        <Route path="/investments-info" element={<PublicInvestments />} />
+        <Route path="/insurance-info" element={<PublicInsurance />} />
+        <Route path="/cards-info" element={<PublicCards />} />
+        <Route path="/accounts-info" element={<Accounts />} />
         <Route path="/digital-banking" element={<DigitalBanking />} />
         <Route path="/calculators" element={<Calculators />} />
       </Route>
@@ -83,7 +91,16 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       >
-        <Route index element={<UserDashboard />} />
+        <Route index element={<Navigate to="/dashboard/overview" replace />} />
+        <Route path="overview" element={<Overview />} />
+        <Route path="accounts" element={<MyAccounts />} />
+        <Route path="transactions" element={<Transactions />} />
+        <Route path="cards" element={<Cards />} />
+        <Route path="loans" element={<Loans />} />
+        <Route path="investments" element={<Investments />} />
+        <Route path="insurance" element={<Insurance />} />
+        <Route path="payments" element={<Payments />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
 
       <Route

@@ -575,7 +575,7 @@ ul, ol { list-style: none; }
 .sidebar {
   width: 260px;
   background: var(--color-navy);
-  min-height: 100vh;
+  height: 100dvh;
   position: fixed;
   left: 0;
   top: 0;

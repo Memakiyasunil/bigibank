@@ -10,7 +10,7 @@ import {
 import {
   Wallet, TrendingUp, CreditCard, Shield, ArrowUpRight, ArrowDownLeft,
   Send, Plus, MoreHorizontal, Eye, EyeOff, Bell, ArrowRight,
-  Building2, Banknote, BarChart3, RefreshCw
+  Building2, Banknote, BarChart3, RefreshCw, XCircle
 } from 'lucide-react';
 import { accountAPI } from '../../services/api';
 
@@ -84,12 +84,78 @@ const doughnutOptions = {
   },
 };
 
-export default function UserDashboard() {
+export default function Overview() {
   const { user } = useSelector((state) => state.auth);
-  const [accounts, setAccounts] = useState(MOCK_ACCOUNTS);
-  const [selectedAccount, setSelectedAccount] = useState(MOCK_ACCOUNTS[0]);
+  const [accounts, setAccounts] = useState([]);
+  const [transactions, setTransactions] = useState([]);
+  const [selectedAccount, setSelectedAccount] = useState(null);
   const [showBalance, setShowBalance] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  // Transfer Modal State
+  const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
+  const [transferData, setTransferData] = useState({ toAccountNumber: '', amount: '', description: '' });
+  const [transferLoading, setTransferLoading] = useState(false);
+  const [transferError, setTransferError] = useState('');
+  const [transferSuccess, setTransferSuccess] = useState('');
+
+  const fetchDashboardData = async () => {
+    try {
+      setLoading(true);
+      const [accRes, txnRes] = await Promise.all([
+        accountAPI.getAccounts(),
+        accountAPI.getTransactions()
+      ]);
+      const fetchedAccounts = accRes.data.data;
+      setAccounts(fetchedAccounts);
+      if (fetchedAccounts.length > 0 && !selectedAccount) {
+        setSelectedAccount(fetchedAccounts[0]);
+      }
+      setTransactions(txnRes.data.data.slice(0, 5)); // Just get 5 recent ones
+    } catch (error) {
+      console.error('Failed to fetch user data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const handleTransfer = async (e) => {
+    e.preventDefault();
+    setTransferLoading(true);
+    setTransferError('');
+    setTransferSuccess('');
+    try {
+      await accountAPI.transfer({
+        fromAccountId: selectedAccount._id,
+        toAccountNumber: transferData.toAccountNumber,
+        amount: Number(transferData.amount),
+        description: transferData.description
+      });
+      setTransferSuccess('Transfer successful!');
+      setTransferData({ toAccountNumber: '', amount: '', description: '' });
+      fetchDashboardData(); // refresh data
+      setTimeout(() => {
+        setIsTransferModalOpen(false);
+        setTransferSuccess('');
+      }, 2000);
+    } catch (error) {
+      setTransferError(error.response?.data?.message || 'Transfer failed');
+    } finally {
+      setTransferLoading(false);
+    }
+  };
+
+  if (loading && accounts.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="w-10 h-10 border-4 border-royal border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   const totalBalance = accounts.reduce((sum, acc) => sum + acc.balance, 0);
 
@@ -106,7 +172,86 @@ export default function UserDashboard() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* Transfer Modal Overlay */}
+      {isTransferModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            className="bg-white rounded-3xl p-6 lg:p-8 w-full max-w-md shadow-2xl relative"
+          >
+            <button 
+              onClick={() => setIsTransferModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-700"
+            >
+              <XCircle size={24} />
+            </button>
+            <h3 className="font-display font-bold text-xl text-navy mb-4">Send Money</h3>
+            
+            {transferError && <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-lg text-sm border border-red-100">{transferError}</div>}
+            {transferSuccess && <div className="mb-4 p-3 bg-green-50 text-emerald-bank rounded-lg text-sm border border-green-100">{transferSuccess}</div>}
+
+            <form onSubmit={handleTransfer} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">From Account</label>
+                <select 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-royal/20 focus:border-royal transition-all"
+                  value={selectedAccount?._id || ''}
+                  onChange={(e) => setSelectedAccount(accounts.find(a => a._id === e.target.value))}
+                >
+                  {accounts.map(acc => (
+                    <option key={acc._id} value={acc._id}>
+                      {acc.accountType.toUpperCase()} - {acc.accountNumber} (₹{acc.balance.toLocaleString('en-IN')})
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Recipient Account Number</label>
+                <input 
+                  required
+                  type="text" 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-royal/20 focus:border-royal transition-all"
+                  placeholder="BIGI..."
+                  value={transferData.toAccountNumber}
+                  onChange={(e) => setTransferData({...transferData, toAccountNumber: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Amount (₹)</label>
+                <input 
+                  required
+                  type="number" 
+                  min="1"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-royal/20 focus:border-royal transition-all"
+                  placeholder="0.00"
+                  value={transferData.amount}
+                  onChange={(e) => setTransferData({...transferData, amount: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                <input 
+                  type="text" 
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-royal/20 focus:border-royal transition-all"
+                  placeholder="What's this for?"
+                  value={transferData.description}
+                  onChange={(e) => setTransferData({...transferData, description: e.target.value})}
+                />
+              </div>
+              <button 
+                disabled={transferLoading}
+                type="submit" 
+                className="w-full py-3 bg-royal hover:bg-navy text-white rounded-xl font-semibold transition-all disabled:opacity-50 flex justify-center items-center gap-2"
+              >
+                {transferLoading ? 'Processing...' : 'Send Money'} <Send size={16} />
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      )}
+
       {/* Header Greeting */}
       <motion.div initial="hidden" animate="visible" variants={fadeUp}
         className="flex items-center justify-between"
@@ -118,8 +263,8 @@ export default function UserDashboard() {
           </h2>
         </div>
         <div className="flex items-center gap-2">
-          <button className="btn btn-outline btn-sm">
-            <RefreshCw size={14} />
+          <button onClick={fetchDashboardData} className="btn btn-outline btn-sm">
+            <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
             Refresh
           </button>
         </div>
@@ -170,19 +315,28 @@ export default function UserDashboard() {
                 key={acc._id}
                 onClick={() => setSelectedAccount(acc)}
                 className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                  selectedAccount._id === acc._id
+                  selectedAccount?._id === acc._id
                     ? 'bg-white text-navy shadow-lg'
                     : 'bg-white/10 text-white/80 hover:bg-white/15'
                 }`}
               >
-                {acc.accountType.toUpperCase()} · {acc.accountNumber.slice(-4)}
+                {acc.accountType.toUpperCase()} · {acc.accountNumber}
               </button>
             ))}
           </div>
 
           {/* Quick Actions */}
           <div className="grid grid-cols-4 gap-3">
-            {QUICK_ACTIONS.map(({ icon: Icon, label, color, path }) => (
+            <button 
+              onClick={() => setIsTransferModalOpen(true)}
+              className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/8 hover:bg-white/15 transition-all group"
+            >
+              <div className="w-10 h-10 bg-white/15 rounded-xl flex items-center justify-center group-hover:bg-white/25 transition-colors text-white">
+                <Send size={18} />
+              </div>
+              <span className="text-white/80 text-xs font-medium">Transfer</span>
+            </button>
+            {QUICK_ACTIONS.slice(1).map(({ icon: Icon, label, color, path }) => (
               <Link key={label} to={path}
                 className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/8 hover:bg-white/15 transition-all group"
               >
@@ -243,7 +397,7 @@ export default function UserDashboard() {
           className="bg-white rounded-2xl p-6 border border-gray-100 shadow-card"
         >
           <h3 className="font-bold text-navy font-display mb-1">Spending Breakdown</h3>
-          <p className="text-gray-400 text-xs mb-4">June 2024</p>
+          <p className="text-gray-400 text-xs mb-4">This Month</p>
           <Doughnut data={spendingData} options={doughnutOptions} />
           <div className="mt-4 text-center">
             <p className="text-gray-400 text-xs">Total Spent This Month</p>
@@ -264,8 +418,8 @@ export default function UserDashboard() {
           </Link>
         </div>
         <div className="divide-y divide-gray-50">
-          {MOCK_TRANSACTIONS.map((txn) => (
-            <div key={txn.id} className="flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
+          {transactions.length > 0 ? transactions.map((txn) => (
+            <div key={txn._id} className="flex items-center justify-between px-6 py-4 hover:bg-gray-50 transition-colors">
               <div className="flex items-center gap-4">
                 <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${txn.type === 'credit' ? 'bg-emerald-50' : 'bg-red-50'}`}>
                   {txn.type === 'credit'
@@ -274,15 +428,17 @@ export default function UserDashboard() {
                   }
                 </div>
                 <div>
-                  <p className="font-semibold text-navy text-sm">{txn.desc}</p>
-                  <p className="text-gray-400 text-xs">{txn.date}</p>
+                  <p className="font-semibold text-navy text-sm">{txn.description}</p>
+                  <p className="text-gray-400 text-xs">{new Date(txn.createdAt).toLocaleDateString()} • {txn.category}</p>
                 </div>
               </div>
               <div className={`font-bold text-sm ${txn.type === 'credit' ? 'text-emerald-bank' : 'text-red-500'}`}>
                 {txn.type === 'credit' ? '+' : '-'}₹{txn.amount.toLocaleString('en-IN')}
               </div>
             </div>
-          ))}
+          )) : (
+            <div className="px-6 py-8 text-center text-gray-500">No recent transactions.</div>
+          )}
         </div>
       </motion.div>
     </div>
