@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: bigibank-server
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: bigibank-client
+    ports:
+      - "5173:80" # Maps the standard Vite dev port to the container's Nginx port (80)
+    depends_on:
+      - server
+    restart: unless-stopped
